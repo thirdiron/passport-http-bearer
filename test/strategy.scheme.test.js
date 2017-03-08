@@ -4,7 +4,7 @@ var chai = require('chai')
 
 describe('Strategy', function() {
     
-  var strategy = new Strategy(function(token, done) {
+  var strategy = new Strategy({ realm: 'test'}, function(token, done) {
     if (token == 'vF9dft4qmT') { 
       return done(null, { id: '1234' }, { scope: 'read' });
     }
@@ -56,7 +56,7 @@ describe('Strategy', function() {
     
     it('should fail with challenge', function() {
       expect(challenge).to.be.a.string;
-      expect(challenge).to.equal('Bearer realm="Users"');
+      expect(challenge).to.equal('Bearer realm="test"');
     });
   });
   
@@ -77,7 +77,7 @@ describe('Strategy', function() {
     
     it('should fail with challenge', function() {
       expect(challenge).to.be.a.string;
-      expect(challenge).to.equal('Bearer realm="Users"');
+      expect(challenge).to.equal('Bearer realm="test"');
     });
   });
   
@@ -98,7 +98,7 @@ describe('Strategy', function() {
     
     it('should fail with challenge', function() {
       expect(challenge).to.be.a.string;
-      expect(challenge).to.equal('Bearer realm="Users"');
+      expect(challenge).to.equal('Bearer realm="test"');
     });
   });
   

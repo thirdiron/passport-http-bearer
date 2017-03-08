@@ -5,7 +5,7 @@ var chai = require('chai')
 describe('Strategy', function() {
     
   describe('failing a request with message string', function() {
-    var strategy = new Strategy(function(token, done) {
+    var strategy = new Strategy({ realm: 'test' }, function(token, done) {
       if (token == 'vF9dft4qmT') { 
         return done(null, { id: '1234' }, { scope: 'read' });
       }
@@ -29,13 +29,13 @@ describe('Strategy', function() {
     
       it('should fail with challenge', function() {
         expect(challenge).to.be.a.string;
-        expect(challenge).to.equal('Bearer realm="Users", error="invalid_token", error_description="The access token expired"');
+        expect(challenge).to.equal('Bearer realm="test", error="invalid_token", error_description="The access token expired"');
       });
     });
   });
   
   describe('failing a request with hash containing message', function() {
-    var strategy = new Strategy(function(token, done) {
+    var strategy = new Strategy({ realm: 'test'}, function(token, done) {
       if (token == 'vF9dft4qmT') { 
         return done(null, { id: '1234' }, { scope: 'read' });
       }
@@ -59,7 +59,7 @@ describe('Strategy', function() {
     
       it('should fail with challenge', function() {
         expect(challenge).to.be.a.string;
-        expect(challenge).to.equal('Bearer realm="Users", error="invalid_token", error_description="The access token expired"');
+        expect(challenge).to.equal('Bearer realm="test", error="invalid_token", error_description="The access token expired"');
       });
     });
   });

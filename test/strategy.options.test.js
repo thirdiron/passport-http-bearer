@@ -57,7 +57,7 @@ describe('Strategy', function() {
     
       it('should fail with challenge', function() {
         expect(challenge).to.be.a.string;
-        expect(challenge).to.equal('Bearer realm="Users", scope="email"');
+        expect(challenge).to.equal('Bearer scope="email"');
       });
     });
   });
@@ -86,7 +86,7 @@ describe('Strategy', function() {
     
       it('should fail with challenge', function() {
         expect(challenge).to.be.a.string;
-        expect(challenge).to.equal('Bearer realm="Users", scope="email feed"');
+        expect(challenge).to.equal('Bearer scope="email feed"');
       });
     });
   });
